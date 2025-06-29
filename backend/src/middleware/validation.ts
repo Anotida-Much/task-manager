@@ -13,10 +13,11 @@ export const validateRegister = (req: Request, res: Response, next: NextFunction
   if (error) {
     return res.status(400).json({
       success: false,
-      error: error.details[0].message
+      error: error.details?.[0]?.message
     });
   }
   next();
+  return;
 };
 
 export const validateLogin = (req: Request, res: Response, next: NextFunction) => {
@@ -29,10 +30,11 @@ export const validateLogin = (req: Request, res: Response, next: NextFunction) =
   if (error) {
     return res.status(400).json({
       success: false,
-      error: error.details[0].message
+      error: error.details?.[0]?.message
     });
   }
   next();
+  return;
 };
 
 export const validateCreateTask = (req: Request, res: Response, next: NextFunction) => {
@@ -47,10 +49,11 @@ export const validateCreateTask = (req: Request, res: Response, next: NextFuncti
   if (error) {
     return res.status(400).json({
       success: false,
-      error: error.details[0].message
+      error: error.details?.[0]?.message
     });
   }
   next();
+  return;
 };
 
 export const validateUpdateTask = (req: Request, res: Response, next: NextFunction) => {
@@ -65,8 +68,9 @@ export const validateUpdateTask = (req: Request, res: Response, next: NextFuncti
   if (error) {
     return res.status(400).json({
       success: false,
-      error: error.details[0].message
+      error: error.details?.[0]?.message
     });
   }
   next();
+  return;
 }; 

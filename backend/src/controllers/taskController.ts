@@ -30,11 +30,13 @@ export const getTasks = async (req: Request, res: Response) => {
       totalPages: Math.ceil(total / limitNum),
       message: 'Tasks retrieved successfully'
     });
+    return;
   } catch (error) {
     res.status(500).json({
       success: false,
       error: 'Internal server error'
     });
+    return;
   }
 };
 
@@ -54,11 +56,13 @@ export const createTask = async (req: Request, res: Response) => {
       data: task,
       message: 'Task created successfully'
     });
+    return;
   } catch (error) {
     res.status(500).json({
       success: false,
       error: 'Internal server error'
     });
+    return;
   }
 };
 
@@ -99,11 +103,13 @@ export const updateTask = async (req: Request, res: Response) => {
       data: task,
       message: 'Task updated successfully'
     });
+    return;
   } catch (error) {
     res.status(500).json({
       success: false,
       error: 'Internal server error'
     });
+    return;
   }
 };
 
@@ -143,10 +149,12 @@ export const deleteTask = async (req: Request, res: Response) => {
       success: true,
       message: 'Task deleted successfully'
     });
+    return;
   } catch (error) {
     res.status(500).json({
       success: false,
       error: 'Internal server error'
     });
+    return;
   }
 }; 

@@ -26,6 +26,7 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
     
     req.user = decoded;
     next();
+    return;
   } catch (error) {
     return res.status(403).json({
       success: false,
