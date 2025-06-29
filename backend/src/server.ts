@@ -11,7 +11,8 @@ import { errorHandler, notFound } from './middleware/errorHandler';
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
+if (!PORT) throw new Error('PORT env variable is required');
 
 // Security middleware
 app.use(helmet());
@@ -28,8 +29,9 @@ const limiter = rateLimit({
 app.use('/api/', limiter);
 
 // CORS configuration
+if (!process.env.CORS_ORIGIN) throw new Error('CORS_ORIGIN env variable is required');
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
+  origin: process.env.CORS_ORIGIN,
   credentials: true
 }));
 
@@ -64,7 +66,7 @@ app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
-  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`Environment: ${process.env.NODE_ENV}`);
 });
 
 export default app; 

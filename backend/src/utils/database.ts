@@ -3,17 +3,27 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+const host = process.env.DB_HOST;
+if (!host) throw new Error('DB_HOST env variable is required');
+const port = process.env.DB_PORT;
+if (!port) throw new Error('DB_PORT env variable is required');
+const database = process.env.DB_NAME;
+if (!database) throw new Error('DB_NAME env variable is required');
+const user = process.env.DB_USER;
+if (!user) throw new Error('DB_USER env variable is required');
+const password = process.env.DB_PASSWORD;
+if (!password) throw new Error('DB_PASSWORD env variable is required');
 
 const pool = new Pool({
-  host: process.env.DB_HOST || 'localhost',
-  port: parseInt(process.env.DB_PORT || '5432'),
-  database: process.env.DB_NAME || 'task_manager',
-  user: process.env.DB_USER || 'postgres',
-  password: process.env.DB_PASSWORD,
+  host: host,
+  port: parseInt(port),
+  database: database,
+  user: user,
+  password: password,
   max: 20,
-  // ssl: {
-  //   rejectUnauthorized: false
-  // }
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 // Test database connection

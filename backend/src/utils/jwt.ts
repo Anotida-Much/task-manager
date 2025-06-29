@@ -1,8 +1,10 @@
 import jwt from 'jsonwebtoken';
 import { JWTPayload } from '../types';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'task_manager_secret_key';
-const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '7d';
+const JWT_SECRET = process.env.JWT_SECRET;
+if (!JWT_SECRET) throw new Error('JWT_SECRET env variable is required');
+const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN;
+if (!JWT_EXPIRES_IN) throw new Error('JWT_EXPIRES_IN env variable is required');
 
 export const generateToken = (userId: number, email: string): string => {
   const options: jwt.SignOptions = { expiresIn: '7d' };
