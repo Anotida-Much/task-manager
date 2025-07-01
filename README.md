@@ -36,7 +36,7 @@ task-manager/
 
 ### 1. Clone the Repository
 ```sh
-git clone <your-repo-url>
+git clone (https://github.com/Anotida-Much/task-manager.git)
 cd task-manager
 ```
 
@@ -181,13 +181,3 @@ You can log in with these test users:
 - Sample data can be added via the UI or SQL
 - For production, update CORS and JWT settings as needed
 - Only 20 concurrent users are allowed to connect at once
-
----
-
-## Contributing
-Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
-
----
-
-## License
-[MIT](LICENSE)
